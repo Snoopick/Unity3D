@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4394631877395806238}
   - component: {fileID: 1517277496719376900}
   - component: {fileID: 3706139697887771352}
+  - component: {fileID: -3651818509980051486}
   m_Layer: 0
   m_Name: MagicBallGreen
   m_TagString: Untagged
@@ -90,7 +91,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7805181918276679024}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ea33824e0916045fb88d872deb788038, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4834,3 +4835,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-3651818509980051486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7805181918276679024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00511254b3be55541a0c9c182584bd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rig: {fileID: 4394631877395806238}
+  speed: 5
+  damage: 1

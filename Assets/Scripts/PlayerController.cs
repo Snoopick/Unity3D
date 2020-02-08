@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public enum CharacterState
@@ -20,6 +21,7 @@ public enum CharacterState
 public class PlayerController : MonoBehaviour
 {
     private CharacterState characterState;
+    [Header("Main")]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private GameObject ballPrefab2;
@@ -28,6 +30,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int skillBallsCount;
     [SerializeField] private float skillAngleBound = 45f;
     [SerializeField] private GameObject SkillEffect;
+    [SerializeField] private GameObject collDown;
+
+    [Header("Bonuses")]
+    [SerializeField] private GameObject hat;
+    
+    
     private static readonly int AttackTrigger = Animator.StringToHash("Attack");
     private static readonly int SkillTrigger = Animator.StringToHash("Skill");
 
@@ -64,6 +72,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    public void WearHat()
+    {
+        hat.SetActive(true);
+    }
+
 
     public void SkillEvent()
     {
@@ -97,8 +111,9 @@ public class PlayerController : MonoBehaviour
     {
         characterState = CharacterState.Move;
         InputController.OnInputAction += OnInputCommand;
-//        Move(true);
         StartCoroutine(MovementProccess(5f));
+        
+        hat.SetActive(false);
     }
 
     private IEnumerator MovementProccess(float time)
@@ -170,6 +185,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        
+        collDown.GetComponent<Cooldown>().Run();
         
         SkillEffect.SetActive(true);
         animator.SetTrigger(SkillTrigger);
